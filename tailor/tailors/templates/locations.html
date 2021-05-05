@@ -1,0 +1,46 @@
+{% include 'layout.html'%}
+{% csrf_token %}
+<form method="POST">
+
+    <h1 align="center">welcome to location</h1>
+<div class="form-group" align="center">
+    <!-- <input type="text" id="loc" value=""> -->
+    <select name="loc" id="loc" required>
+        <option value=""></option>
+        {% for loc in locations %}
+        <option value={{loc.id}}>{{ loc.loc}}</option>
+        {% endfor %}
+    </select>
+    <div class="input-group">
+        <input type="submit" name="location_selector" id="location_selector" value="Done"/>
+    </div>
+    
+    <!-- {% csrf_token %} -->
+    <!-- <select name="shop" id="shop" >
+        <option value=""></option>
+        {% for shop in shops %}
+        <option value={{shop.id}}>{{shop.id}}</option>
+        {% endfor %}
+        
+    </select> -->
+    <script>
+        $('#shop').hide(); 
+        $("#loc").trigger("change");
+        $("#loc").change(function(){
+            if($(this).val()!=''){
+                $('#shop').show();
+                //$('#shop').attr('required', '');
+                $('#shop').attr('data-error', 'This field is required.');
+            }
+            else{
+                $('#shop').hide();
+                /* $('#shop').removeAttr('required');
+                $('#shop').removeAttr('data-error'); */
+            }
+        } 
+        );
+        
+    </script>
+</div>
+{% csrf_token %}
+</form>

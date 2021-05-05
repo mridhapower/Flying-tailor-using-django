@@ -1,0 +1,46 @@
+{% include 'layout.html'%}
+
+<html>
+    <center>
+    <form method="POST">
+        {% csrf_token %}
+        <body align="center">
+            <h1>Welcome to tailors</h1>
+                
+        <!-- <select name="shop" id="shop" >
+            <option value=""></option>
+            {% for shop in shops %}
+            <option value={{shop.id}}>{{ shop.name}}</option>
+            {% endfor %}
+            
+        </select> -->
+        <table class="table table-hover table-bordered table-dark" align="center">
+            <thead>
+            <thead>
+                <tr>
+                    <th scope="row"></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                </tr>
+            </thead>
+            {% for shop in shops %}
+            <tbody>
+                {% csrf_token %}
+                <tr>
+                    <th scope="row"></th>
+                    <td>{{shop.name}}</td>
+                    <td>{{shop.address}}</td>
+                    <td><button name=button value="{{shop.id}}">Select</button></td>
+                    
+                </tr>
+            </tbody>
+            {% endfor %}
+            
+        </thead>
+        </table>
+        
+        </body>
+        {% csrf_token %}
+    </form>
+</center>
+</html>

@@ -1,0 +1,49 @@
+{% include 'layout.html'%}
+<!DOCTYPE html>
+<html>
+    <center>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        
+        <div>
+            <h2>Login</h2>
+        </div>
+            <form method="POST">
+                {% if messages %}
+                    {% for message in messages %}
+                        <h2 style="color:green;">{{message}}</h2>
+                    {% endfor %}
+                {% endif %}
+                {% csrf_token %}
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="text" name="password" required>
+                </div>
+                
+                
+                <select name="checklog" id="checklog" required='required'>
+                    <option value=""></option>
+                    <option value="Customer">Customer</option>
+                    <option value="Shop">Shop</option>
+                    <option value="Deliveryman">Deliveryman</option>
+                    <option value="Admin">Admin</option>
+                    
+                </select>
+                
+                
+                <!-- <button type="button" onclick="cond()">ok</button> -->
+                <div class="input-group">
+                    <input type="submit" name="login_user" value="Login"/>
+                </div>
+                
+                
+            </form>
+        </center>
+    </body>
+</html>
