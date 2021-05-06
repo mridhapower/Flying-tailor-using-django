@@ -3,9 +3,8 @@
 <html>
     <center>
     <form method="POST">
-        {% csrf_token %}
         <body align="center">
-            <h1>Welcome to tailors</h1>
+            <h1>Welcome to {{name}}</h1>
                 
         <!-- <select name="shop" id="shop" >
             <option value=""></option>
@@ -21,24 +20,26 @@
                     <th scope="row"></th>
                     <th scope="col">Name</th>
                     <th scope="col">Address</th>
+                    <th scope="col"></th>
+                    <th scope="row"></th>
                 </tr>
             </thead>
+            
             {% for shop in shops %}
             <tbody>
-                {% csrf_token %}
+                
                 <tr>
                     <th scope="row"></th>
                     <td>{{shop.name}}</td>
                     <td>{{shop.address}}</td>
-                    <td><button name=button value="{{shop.id}}">Select</button></td>
-                    
+                    <td><button name="button" method="POST" value="{{shop.id}}">Select</button></td>
+                    <th scope="row"></th>
                 </tr>
             </tbody>
             {% endfor %}
             
         </thead>
         </table>
-        
         </body>
         {% csrf_token %}
     </form>

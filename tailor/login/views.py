@@ -10,9 +10,10 @@ def login(request):
         name = request.POST.get('name')
         password = request.POST.get('password')
         checklog =  request.POST.get('checklog')
-        print(checklog)
+        #print(checklog)
         if checklog=='Customer' and Customer.objects.filter(name=name,password=password).exists():            
             """ messages.success("boo") """
+            request.session['name']=name
             return redirect('locations')
         else:
             return render(request,'login.html')
