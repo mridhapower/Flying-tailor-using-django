@@ -11,10 +11,10 @@ def location(request):
         print(loc)
         #id=Shop.objects.get(loc_id=loc)
         shops=Shop.objects.filter(loc_id=loc)
-        
-        print(name)
+        locationName=list(Location.objects.filter(id=loc).values_list('loc', flat=True))
+        print(locationName[0])
         #print(shops)
-        return render(request,'tailors.html',{'shops':shops,'loc':loc,})
+        return render(request,'tailors.html',{'name':name,'shops':shops,'loc':loc,'locationName':locationName[0]})
     else:
         button=request.POST.get('button')
         print(button)
